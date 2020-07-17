@@ -19,6 +19,8 @@
 <script src="{{ asset('assets/js/template.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+<script src="{{ asset('assets/plugins/dropify/js/dropify.min.js') }}"></script>
+<script src="{{ asset('assets/js/dropify.js')}}"></script>
 
 </body>
 

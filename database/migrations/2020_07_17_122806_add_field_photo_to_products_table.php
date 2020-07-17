@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class AddFieldPhotoToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('invoice')->unique();
-        $table->integer('customer_id');
-        $table->integer('user_id');
-        $table->integer('total');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('code')->unique()->after('id');
+            $table->string('photo')->nullable()->after('category_id');
         });
     }
 
@@ -30,6 +26,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::table('products', function (Blueprint $table) {
+            //
+        });
     }
 }

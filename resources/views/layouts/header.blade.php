@@ -16,11 +16,11 @@
   <link href="{{ asset('assets/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
   <!-- end plugin css -->
-
+  <link href="{{asset('assets/plugins/dropify/css/dropify.min.css')}}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
 
   <!-- common css -->
-  <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/app_dark.css') }}" rel="stylesheet" />
   <!-- end common css -->
 
   </head>

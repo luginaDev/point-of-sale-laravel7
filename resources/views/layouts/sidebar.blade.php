@@ -24,17 +24,51 @@
                     <li class="nav-item nav-category">Manajemen Produk</li>
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false" aria-controls="email">
-                            <i class="link-icon" data-feather="mail"></i>
+                            <i class="link-icon" data-feather="folder"></i>
                             <span class="link-title">Manajemen Produk</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse " id="email">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="email/inbox.html" class="nav-link ">Produk</a>
+                                    <a href="{{ route('produk.index') }}" class="nav-link ">Produk</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="email/read.html" class="nav-link ">Kategori</a>
+                                    <a href="{{ route('kategori.index') }}" class="nav-link ">Kategori</a>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false" aria-controls="email">
+                            <i class="link-icon" data-feather="users"></i>
+                            <span class="link-title">Manajemen User</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse " id="email">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="email/inbox.html" class="nav-link ">Role</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="email/inbox.html" class="nav-link ">Users</a>
+                                </li>
+                                
+                               
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false" aria-controls="email">
+                            <i class="link-icon" data-feather="shopping-bag"></i>
+                            <span class="link-title">Manajemen Transaksi</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse " id="email">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="email/inbox.html" class="nav-link ">transkasi</a>
                                 </li>
                                
                             </ul>
