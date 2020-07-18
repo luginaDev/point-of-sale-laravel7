@@ -12,8 +12,9 @@ class ProductController extends Controller
     public function index()
     {
         $kategori = Category::orderBy('created_at', 'DESC')->get();
+        $produk = Product::with('category')->orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('products.index', compact('kategori'));
+        return view('products.index', compact('kategori', 'produk'));
     }
 
     public function store(Request $request)
@@ -24,7 +25,7 @@ class ProductController extends Controller
             'stock' => 'required|integer',
             'price' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
-            'photo' => 'nullable|image|mimes:jpg,png,jpeg'
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
         ]);
 
         try {
@@ -69,5 +70,54 @@ class ProductController extends Controller
         }
         Image::make($photo)->save($path . '/' . $images);
         return $images;
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+
+        if(!empty($product->photo)){
+            File::delete(public_path('assets/produk/' . $product->photo));
+        }
+        $product->delete();
+        return redirect()->back()->with(['success' =>  $product->name . ' Telah Dihapus']);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'stock' => 'required|integer',
+            'price' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
+        ]);
+
+        try {
+            $produk = Product::findOrFail($id);
+            $photo = $produk->photo;
+            if($request->hasfile('photo')){
+                !empty($photo) ? File::delete(public_path('assets/product/' . $photo)):null;
+
+                $photo = time().'.'.$request->photo->extension();  
+   
+                $request->photo->move(public_path('assets/product'), $photo);
+            }
+
+            $produk->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'stock' => $request->stock,
+                'price' => $request->price,
+                'category_id' => $request->category_id,
+                'photo' => $photo
+
+            ]);
+            return redirect()->back()->with(['success' => $produk->name . ' Berhasil diubah']);
+
+        } catch (\Throwable $th) {
+             return redirect()->back()->with(['error' => $th->getMessage()]);
+        }
     }
 }

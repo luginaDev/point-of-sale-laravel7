@@ -20,5 +20,10 @@ class Product extends Model
                 'length' => 5
             ]
         ];
-    }   
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

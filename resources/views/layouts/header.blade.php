@@ -20,7 +20,7 @@
     <link href="{{ asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
 
   <!-- common css -->
-  <link href="{{ asset('assets/css/app_dark.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" />
   <!-- end common css -->
 
   </head>
