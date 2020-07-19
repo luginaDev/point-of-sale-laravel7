@@ -49,12 +49,15 @@
                         <div class="collapse " id="email">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="email/inbox.html" class="nav-link ">Role</a>
+                                    <a href="{{ route('role.index') }}" class="nav-link ">Role</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="email/inbox.html" class="nav-link ">Users</a>
+                                    <a href="{{ route('users.roles_permission') }}" class="nav-link ">Role Permission</a>
                                 </li>
-                                
+                                <li class="nav-item">
+                                    <a href="{{ route('user.index') }}" class="nav-link ">Users</a>
+                                </li>
+                              
                                
                             </ul>
                         </div>
@@ -120,9 +123,13 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link">
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" class="nav-link">
                                                 <i data-feather="log-out"></i>
                                                 <span>Log Out</span>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
                                             </a>
                                         </li>
                                     </ul>

@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
-Route::resource('kategori', 'CategoryController');
-Route::resource('produk', 'ProductController');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('kategori', 'CategoryController');
+    Route::resource('produk', 'ProductController');
+    Route::get('/home', 'HomeController@index')->name('home');  
+    Route::resource('role', 'RoleController');
+    Route::resource('user', 'UserController');
+    Route::post('users', 'UserController@addPermission')->name('user.add_permission');
+    Route::get('users/role-permission', 'UserController@rolePermission')->name('users.roles_permission');
+    Route::put('users/permission/{role}', 'UserController@setRolePermission')->name('user.setRolePermission');
+});
+
