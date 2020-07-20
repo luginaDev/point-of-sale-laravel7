@@ -111,4 +111,21 @@ class UserController extends Controller
         $role->syncPermissions($request->permission);
         return redirect()->back()->with(['success' => 'Permission To Role Saved!']);
     }
+
+    public function roles (Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $roles =Role::all()->pluck('name');
+        return view('user.roles',  compact('user', 'roles'));
+    }
+
+    public function setRole(Request $request, $id)
+    {
+        $this->validate($request, [
+            'role' => 'required|'
+        ]);
+
+        $user = User::findOrFail($id);
+        return redirect()->back()->with(['success' => 'Role Sudah Di Set']);
+    }
 }

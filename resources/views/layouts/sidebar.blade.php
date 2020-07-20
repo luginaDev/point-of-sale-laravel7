@@ -40,6 +40,7 @@
                             </ul>
                         </div>
                     </li>
+                    @role('admin')
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false" aria-controls="email">
                             <i class="link-icon" data-feather="users"></i>
@@ -62,6 +63,8 @@
                             </ul>
                         </div>
                     </li>
+                    @endrole
+                    @role('kasir')
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false" aria-controls="email">
                             <i class="link-icon" data-feather="shopping-bag"></i>
@@ -71,13 +74,13 @@
                         <div class="collapse " id="email">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="email/inbox.html" class="nav-link ">transkasi</a>
+                                    <a href="{{ route('order.transaksi') }}" class="nav-link ">transkasi</a>
                                 </li>
                                
                             </ul>
                         </div>
                     </li>
-                    
+                    @endrole
                 </ul>
             </div>
         </nav>
